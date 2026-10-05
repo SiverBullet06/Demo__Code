@@ -175,8 +175,16 @@ public class PersonManagement {
         String key = yourRanking.toLowerCase().trim() ;
         Student student = new Student() ;
         if (student.evaluateRanking().equalsIgnoreCase(key)){
-            
+            if (key.equalsIgnoreCase("a")){
+                return (double)10000000*(1- 0.5 ) ;
+            }else if (key.equalsIgnoreCase("b+")){
+                return (double)10000000*(1- 0.3 )  ;
+            }else {
+                return Student.tution ;
+            }
         }
+        return  0 ;
     }
+
 
 }
