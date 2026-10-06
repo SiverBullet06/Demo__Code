@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.project.application02.models.Person;
 import org.project.application02.models.Student;
+import org.project.application02.models.Teacher;
 
 /*
  * =========================================================================
@@ -59,7 +60,7 @@ public class PersonManagement {
      * - Tận dụng tính Đa hình của `equals` và `hashCode` trong HashSet
      *   để kiểm tra và chống trùng lặp dữ liệu.
      */
-    public void addPerson(Scanner sc) {
+    public void addStudent(Scanner sc) {
         Student st = new Student();
         Student student = st.inputStudent(sc);
 
@@ -68,20 +69,27 @@ public class PersonManagement {
         if (!isAdded) {
             System.out.println("Mã id trùng: " + student.getId());
         } else {
-            System.out.println("Đã thêm person vào danh sách thành công!");
-            studentList.add(student);
+            System.out.println("Đã thêm student vào danh sách thành công!");
+            personHashSet.add(student);
+        }
+    }
+    public void addTeacher(Scanner sc) {
+        Teacher teacher = new Teacher();
+        Teacher teach = teacher.inputTeacher(sc);
+
+        // personHashSet sẽ gọi hashCode() và equals() đã được override trong Student
+        boolean isAdded = personHashSet.add(teach);
+        if (!isAdded) {
+            System.out.println("Mã id trùng: " + teach.getId());
+        } else {
+            System.out.println("Đã thêm teacher vào danh sách thành công!");
+            personHashSet.add(teach);
         }
     }
 
     public void displayInfor() {
-        for (Student person : studentList) {
-            System.out.println("\nMã số :" + person.getId() +
-                    "\nHọ và tên : " + person.getFullName() +
-                    "\nTuổi :" + person.getAge() +
-                    "\nĐịa chỉ :" + person.getAddress() +
-                    "\nSố điện thoại :" + person.getPhone() +
-                    "\nĐiểm số :" + person.getScore()
-            );
+        for (Person person : personHashSet) {
+            person.displayInfor();
         }
     }
 

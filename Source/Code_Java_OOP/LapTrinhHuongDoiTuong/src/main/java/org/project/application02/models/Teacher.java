@@ -32,14 +32,14 @@ public class Teacher extends Person implements I_evaluateRanking{
     }
 
     public Teacher (){}
-    public void inputTeacher (Scanner sc ) {
+    public Teacher inputTeacher (Scanner sc ) {
         super.inputInformation(sc);
         System.out.println("Nhập môn giảng dạy :");
         subject = sc.nextLine() ;
         System.out.println("Nhập số tiết giảng dạy :");
         teachingHours = sc.nextInt();
         System.out.println("Nhập mức lương cơ bản :");
-
+        return this ;
     }
 
     @Override

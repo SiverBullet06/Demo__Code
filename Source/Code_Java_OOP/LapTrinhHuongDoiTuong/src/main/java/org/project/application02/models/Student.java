@@ -77,9 +77,8 @@ public class Student extends Person implements I_evaluateRanking{
         sc.nextLine();
         System.out.println("Nhập tên lớp học :");
         this.classes = sc.nextLine();
-
         System.out.println("Thêm đối tượng cụ thể cho lớp cha");
-        return this;
+        return  this ;
     }
 
     /*

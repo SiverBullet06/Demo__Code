@@ -18,31 +18,66 @@ public class MainApplication02 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int n ;
+        String keyword ;
+        while (true) {
+            PersonManagement personManagement = new PersonManagement();
+            System.out.println("\n===== MENU =====");
+            System.out.println("0. Thoát");
+            System.out.println("1. Thêm sinh viên");
+            System.out.println("2. Thêm giảng viên");
+            System.out.println("3. Hiển thị tất cả danh sách");
+            System.out.println("4. Xóa mã cá nhân :");
+            System.out.println("5. Tìm kiếm theo mã cá nhân :");
+            System.out.println("6 . Danh sách đạt giải thưởng");
+            System.out.print("Chọn: ");
 
-        // Khởi tạo đối tượng quản lý để thực thi các nghiệp vụ
-        PersonManagement personManagement = new PersonManagement();
-
-        System.out.println("Nhập số lượng :");
-        int n = sc.nextInt();
-        sc.nextLine();
-
-        // Vòng lặp thêm n đối tượng sinh viên
-        for (int i = 0; i < n; i++) {
-            personManagement.addPerson(sc);
+            int choice = sc.nextInt();
+            sc.nextLine();
+            switch (choice) {
+                case 1:
+                    System.out.println("1.Thêm sinh viên");
+                    System.out.println("Nhập số lượng :");
+                    n = sc.nextInt();
+                    sc.nextLine();
+                    for (int i = 0; i < n; i++) {
+                        personManagement.addStudent(sc);
+                    }
+                    break;
+                case 2:
+                    System.out.println("1.Thêm giảng viên");
+                    System.out.println("Nhập số lượng :");
+                    n = sc.nextInt();
+                    sc.nextLine();
+                    for (int i = 0; i < n; i++) {
+                        personManagement.addTeacher(sc);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Hiển thị tất cả danh sách");
+                    personManagement.displayInfor();
+                    break;
+                case 4:
+                    System.out.println("Nhập mã cá nhân bạn muốn xóa :");
+                    keyword = sc.nextLine();
+                    personManagement.deleteById(keyword);
+                    break;
+                case 5:
+                    System.out.println("Tìm kiếm theo mã cá nhân :");
+                    String id = sc.nextLine();
+                    personManagement.findById(id);
+                case 6:
+                    personManagement.getRanKing();
+                    System.out.println("=== DANH SÁCH SINH VIÊN ĐẠT GIẢI THƯỞNG LÀ ===");
+                    personManagement.displayRanking();
+                case 0:
+                    System.out.println("Thoát chương trình!");
+                    sc.close();
+                    return;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
+            }
         }
 
-        // Hiển thị danh sách thông tin sinh viên
-        personManagement.displayInfor();
-        System.out.println("Nhập mã cá nhân bạn muốn xóa :");
-        String keyword = sc.nextLine() ;
-        personManagement.deleteById(keyword);
-
-        System.out.println("Tìm kiếm theo mã cá nhân :");
-        String id = sc.nextLine() ;
-        personManagement.findById(id);
-
-        personManagement.getRanKing();
-        System.out.println("=== DANH SÁCH SINH VIÊN ĐẠT GIẢI THƯỞNG LÀ ===");
-        personManagement.displayRanking();
     }
 }
